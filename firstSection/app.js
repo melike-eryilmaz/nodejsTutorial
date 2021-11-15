@@ -8,7 +8,6 @@ console.log(firstName);
 //window.setTimeout   ; window objesinin bu gibi func ları vardır.
 
 //nodejs
-
 var age = 24;
 
 console.log("global",global);

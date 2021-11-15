@@ -1,5 +1,6 @@
 const appB = require('./appB');
 const path = require('path');
+const url = require('url');
 
 console.log(appB.height);
 appB.log(123);
@@ -32,4 +33,11 @@ console.log("parse",result.name);
 console.log("parse",result.base);
 console.log("parse",result.root);
 
+
+/**URL module */
+const address = 'https://www.btkakademi.gov.tr/portal/course/player/deliver/node-js-ile-web-programlama-14301?year=2019&month=mart'
+let response = url.parse(address,true);
+console.log("response",response);
+console.log("hostname",response.hostname);
+console.log("query",response.query.year);
 
