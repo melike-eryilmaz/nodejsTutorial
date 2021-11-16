@@ -1,5 +1,6 @@
 const http = require('http')
 const fs = require('fs');
+const qs = require('querystring')
 
 const server = http.createServer((req, res) => {
   const url = req.url;
@@ -27,6 +28,22 @@ const server = http.createServer((req, res) => {
   }
 
   if(url === '/log' && method === 'POST'){
+    //body parsing 
+    const body = [];
+    req.on('data',(chunk)=>{
+        body.push(chunk);
+        console.log(chunk);//buffer
+    });
+
+    req.on('end',()=>{
+        const bodyParsed = Buffer.concat(body).toString();
+        console.log(bodyParsed);
+        const message = bodyParsed.split('=')[1];
+        console.log(message);
+        console.log(qs.parse(bodyParsed));
+        fs.appendFileSync('message.txt',message)
+    })
+
     fs.writeFileSync('message.txt','/ndeneme');//`${}`
     res.statusCode = 302;
     res.setHeader('Location', '/');
