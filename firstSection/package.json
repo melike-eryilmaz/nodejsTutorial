@@ -1,0 +1,25 @@
+{
+  "name": "nodejsTutorial",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start":"node app.js",
+    "start-dev":"node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/melike-eryilmaz/nodejsTutorial.git"
+  },
+  "keywords": [],
+  "author": "Melike Eryılmaz",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/melike-eryilmaz/nodejsTutorial/issues"
+  },
+  "homepage": "https://github.com/melike-eryilmaz/nodejsTutorial#readme",
+  "dependencies": {
+    "underscore": "^1.13.1"
+  }
+}
