@@ -10,6 +10,12 @@ const { join } = require('path');
 //use as a middleware
 app.use(express.urlencoded({extended:false}))
 
+/**Proje içerisindeki css ve img dosyalarına erişebilmek için /404 vermemesi için bu dosyaları proje içerisinde tüm dosyalara açmak gerekir
+ * Bu şekilde yapıldığında başında public route gerek kalmadan css/syle.css şeklinde çağırabiliriz.
+ */
+app.use(express.static(path.join(__dirname,'public')))
+
+
 //use routes as a middleware
 app.use('/admin',adminRoutes);
 app.use('/user',userRoutes);
