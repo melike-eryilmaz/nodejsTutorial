@@ -1,6 +1,11 @@
 const express = require('express');
 const app = express();
+const bodyParser = require('body-parser');
 
+
+//app.use(bodyParser.urlencoded({extended:false}))  //now deprecated use express.urlencoded
+
+app.use(express.urlencoded({extended:false}))
 /*
 //Herhangi bir url belirtmedik .Tüm url lerde çalışır.
 app.use((req,res,next)=>{
@@ -39,9 +44,38 @@ app.use('/app-product-delete',(req,res,next)=>{
 })
 
 
+app.use('/add-product',(req,res,next)=>{
+    res.send(`
+        <html>
+            <head>
+                <title>Add a new product</title>
+            </head>
+            <body>
+                <form action="/products" method="POST">
+                    <input type="text" name="productName">
+                    <input type="submit" value="save product">
 
+                </form>
+            </body>
+        </html>
+    
+    `)
+})
 
-
+/*
+//use yerine get veya post gibi method filtrelemesi yapabiliriz.
+//use ile tüm methodlarda çalışır.
+app.use('/products',(req,res,next)=>{
+    console.log(req.body);
+    res.redirect('/');
+})
+*/
+//only post methods..
+//if(url.method==='POST') gibi..
+app.post('/products',(req,res,next)=>{
+    console.log(req.body);
+    res.redirect('/');
+})
 
 app.get('/',(req,res)=>{
     res.send('Welcome home page')//default text/html gönderir.
