@@ -1,11 +1,18 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
+const adminRoutes = require('./routes/admin');
+const userRoutes = require('./routes/user');
 
 
 //app.use(bodyParser.urlencoded({extended:false}))  //now deprecated use express.urlencoded
-
+//use as a middleware
 app.use(express.urlencoded({extended:false}))
+
+//use routes as a middleware
+app.use('/admin',adminRoutes);
+app.use('/user',userRoutes);
+
 /*
 //Herhangi bir url belirtmedik .Tüm url lerde çalışır.
 app.use((req,res,next)=>{
@@ -32,18 +39,18 @@ app.use('/app-product-delete',(req,res,next)=>{
 })
 
 */
-
+/* moved user.js
 //Örneğin her ana dizine gelindiğinde loglama yapmak istiyoruz.Aşağıdaki gibi yaparız.
 app.use('/',(req,res,next)=>{
     console.log("Loglama yapılıyor..");
     next();
 })
-
+*/
 app.use('/app-product-delete',(req,res,next)=>{
     res.send('product delete')
 })
 
-
+/* moved admin.js
 app.use('/add-product',(req,res,next)=>{
     res.send(`
         <html>
@@ -61,7 +68,7 @@ app.use('/add-product',(req,res,next)=>{
     
     `)
 })
-
+*/
 /*
 //use yerine get veya post gibi method filtrelemesi yapabiliriz.
 //use ile tüm methodlarda çalışır.
@@ -72,11 +79,12 @@ app.use('/products',(req,res,next)=>{
 */
 //only post methods..
 //if(url.method==='POST') gibi..
+/* moved admin.js
 app.post('/products',(req,res,next)=>{
     console.log(req.body);
     res.redirect('/');
 })
-
+*/
 app.get('/',(req,res)=>{
     res.send('Welcome home page')//default text/html gönderir.
 
