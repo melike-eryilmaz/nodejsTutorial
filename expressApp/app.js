@@ -94,6 +94,10 @@ app.get('/api/products',(req,res)=>{
     res.send('Product list')
 });
 
+app.use((req,res)=>{
+    res.status(404).send('<h1>Page not found</h1>')
+})
+
 app.listen(3000,()=>{
     console.log('Listening port 3000');
 })
