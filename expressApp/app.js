@@ -3,7 +3,8 @@ const app = express();
 const bodyParser = require('body-parser');
 const adminRoutes = require('./routes/admin');
 const userRoutes = require('./routes/user');
-
+const path = require('path');
+const { join } = require('path');
 
 //app.use(bodyParser.urlencoded({extended:false}))  //now deprecated use express.urlencoded
 //use as a middleware
@@ -86,7 +87,8 @@ app.post('/products',(req,res,next)=>{
 })
 */
 app.get('/',(req,res)=>{
-    res.send('Welcome home page')//default text/html gönderir.
+  //  res.send('Welcome home page')//default text/html gönderir.
+  res.sendFile(path.join(__dirname,'./','views','index.html'))
 
 });
 
@@ -95,7 +97,8 @@ app.get('/api/products',(req,res)=>{
 });
 
 app.use((req,res)=>{
-    res.status(404).send('<h1>Page not found</h1>')
+   // res.status(404).send('<h1>Page not found</h1>')
+   res.status(404).sendFile(path.join(__dirname,'./','views','404.html'))
 })
 
 app.listen(3000,()=>{
