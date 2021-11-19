@@ -28,5 +28,8 @@ block content
 
 
   .row
-    each product in products
-      +product(product)
+    if products.length > 0
+      each product in products
+        +product(product)
+    else
+      h1 no products
