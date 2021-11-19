@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const adminRoutes = require('./routes/admin');
 const userRoutes = require('./routes/user');
 const path = require('path');
-const { join } = require('path');
+
 
 //app.use(bodyParser.urlencoded({extended:false}))  //now deprecated use express.urlencoded
 //use as a middleware
