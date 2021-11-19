@@ -4,7 +4,7 @@ const path = require('path');
 
 
 app.use(express.static(path.join(__dirname,'public')))
-
+app.locals.basedir = path.join(__dirname, 'views');
 //npm install pug
 //Uygulamaya hangi template engine kullanacağımızı söylüyoruz.
 app.set('view engine','pug');
